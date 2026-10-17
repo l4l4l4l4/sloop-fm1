@@ -79,8 +79,9 @@ static int phys_render_draws(const track_t *t, int32_t model)   /* model: the MO
 #if FELUCCA_SLICE
 #include "eng_slice.c"
 #endif
+#include "eng_dub.c"            /* DUB: native single-oscillator performance siren, append-only */
 
-static const engine_t *const ENGINES[NENGINES] = {&ENG_ANALOG, &ENG_DIGITAL, &ENG_PHASE, &ENG_LOFI, &ENG_SAMPLE,
+static const engine_t *const ENGINES[] = {&ENG_ANALOG, &ENG_DIGITAL, &ENG_PHASE, &ENG_LOFI, &ENG_SAMPLE,
                                                     &ENG_FORMANT, &ENG_TRIO, &ENG_DRAWBAR,   /* 7: ENGI_DRAWBAR (eng_drawbar.c) */
                                                     &ENG_GRAIN,
                                                     &ENG_FM6,    /* 9 (ENGI_FM6): always; SLICE after it (core.h) */
@@ -88,14 +89,18 @@ static const engine_t *const ENGINES[NENGINES] = {&ENG_ANALOG, &ENG_DIGITAL, &EN
 #if FELUCCA_SLICE
                                                     &ENG_SLICE,
 #endif
+                                                    &ENG_DUB,
 };
 _Static_assert(ENGI_FM6 == 9u, "ENGINES[ENGI_FM6] is FM6");
 _Static_assert(ENGI_GRAIN == 8u && ENGI_PHYS == 10u && ENGI_NOISE == 11u && ENGI_SLICE == 12u, "ENGINES[] order");
+_Static_assert(NELEM(ENGINES) == NENGINES && ENGI_DUB == ENGI_SLICE + FELUCCA_SLICE, "DUB follows existing engines");
 
 /* every factory sound as loud as the others: a level trim per preset, 1/2 dB, measured on a phrase
  * that fits the sound (tools/level_presets.py writes preset_trim.h); a track keeps it in P_ED_FX */
 #include "preset_trim.h"
 static int16_t preset_trim(uint32_t e, uint32_t pi)
 {
+    if (e == ENGI_DUB)
+        return 0;                                      /* neutral DUB trim; row 12 belongs to optional SLICE */
     return e < PT_ENGINES && pi < PT_MAX ? PRESET_TRIM[e][pi] : 0;
 }

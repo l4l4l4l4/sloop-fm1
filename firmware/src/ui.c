@@ -3,7 +3,7 @@
 /* Felucca user interface. Four columns map to KNOB 1..4. Rendering is lazy:
  * every element remembers what it last drew and is redrawn only on change. */
 #ifndef FELUCCA_VERSION
-#define FELUCCA_VERSION "SLOOP 2.7.1"  /* the beat machine firmware for the FM-1 (based on Felucca) */
+#define FELUCCA_VERSION "SLOOP 2.7.1-DUB1"  /* dub siren fork, based on SLOOP 2.7.1 */
 #endif
 static void project_save(uint32_t slot);
 static void arrangement_save(void);
@@ -99,7 +99,7 @@ UI_SMALL static uint32_t page_first(uint32_t fam)
 {
     uint32_t i;
     for (i = 0; i < NPAGES; i++)
-        if (PAGES[i].fam == fam)
+        if (PAGES[i].fam == fam && page_shown(&PAGES[i]))
             return i;
     return 0;
 }
@@ -287,8 +287,11 @@ UI_SMALL static void open_family(uint32_t fam)
             i = page_first(fam);
         ui.page = (uint8_t)i;
     } else {
-        ui.page = ui.fam_last[fam] && PAGES[ui.fam_last[fam]].fam == fam && page_shown(&PAGES[ui.fam_last[fam]])
-                      ? ui.fam_last[fam] : (uint8_t)page_first(fam);
+        if (fam == FAM_EDIT && !is_drum(TSEL) && TSEL->eng_req % NENGINES == ENGI_DUB)
+            ui.page = (uint8_t)page_first(fam);         /* enter the playable controls before the sound edits */
+        else
+            ui.page = ui.fam_last[fam] && PAGES[ui.fam_last[fam]].fam == fam && page_shown(&PAGES[ui.fam_last[fam]])
+                          ? ui.fam_last[fam] : (uint8_t)page_first(fam);
     }
     ui.fam_last[fam] = ui.page;
     ui.home = 0;
@@ -516,6 +519,7 @@ static const struct { uint8_t kind, e; const char *name; } BANK[] = {
     {BK_FX, ENGI_SLICE, "BREAK 16"}, {BK_FX, ENGI_SLICE, "CHOP 8"}, {BK_FX, ENGI_SLICE, "REVERSE"},
     {BK_FX, ENGI_SLICE, "USR SLICE"},
 #endif
+    {BK_FX, ENGI_DUB, "DUB SIREN"},
 };
 #define NBANK (sizeof BANK / sizeof BANK[0])
 static uint8_t bank_pi[NBANK];                       /* the preset index of each entry in its engine */
@@ -769,7 +773,7 @@ UI_SMALL static const param_desc_t *home_param(uint32_t k, int16_t **vp)
     }
     id = ENGINES[TSEL->eng_req % NENGINES]->macro[k & 3u];
     *vp = &TSEL->p[id];
-    return track_desc(TSEL, id);
+    return dub_performance_desc(TSEL, id);
 }
 
 /* select track i (KNOB 1 on TRACKS, the editor): its sound, pages and pattern from now on */

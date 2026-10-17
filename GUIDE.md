@@ -48,7 +48,7 @@ The 11 black keys are F#3, G#3, A#3, C#4, D#4, F#4, G#4, A#4, C#5, D#5, F#5. The
 14. [Song mode: sections, chains, songs](#14-song-mode-sections-chains-songs)
 15. [The screens](#15-the-screens)
 16. [Every page, knob by knob](#16-every-page-knob-by-knob)
-17. [The sounds and the twelve engines](#17-the-sounds-and-the-twelve-engines)
+17. [The sounds and the thirteen engines](#17-the-sounds-and-the-thirteen-engines)
 18. [Effects: master, punch-in, per track](#18-effects-master-punch-in-per-track)
 19. [The visualiser](#19-the-visualiser)
 20. [The HOME menu and the lights](#20-the-home-menu-and-the-lights)
@@ -720,11 +720,11 @@ Notes:
 
 ---
 
-## 17. The sounds and the twelve engines
+## 17. The sounds and the thirteen engines
 
 ### The sound bank
 
-**153 factory sounds**, every one a full patch on one of the twelve engines, all level-matched (the same LEVEL gives the same loudness). **PRESETS** browses them **by kind** — basses, keys, organs, pads, leads, plucks and bells, stabs, FX — with the kind shown next to the name; your **32 user presets** come after. A new project starts at **90 BPM** with *808 BOOM* on track 1, *RHODES* on track 2, *LOFI FLUTE* on track 3 and the 808 kit on track 4.
+**154 factory sounds**, each a full patch on one of thirteen engines. The original 153 sounds are level-matched; DUB SIREN is not calibrated to that bank. **PRESETS** browses them **by kind** — basses, keys, organs, pads, leads, plucks and bells, stabs, FX — with the kind shown next to the name; your **32 user presets** come after. A new project starts at **90 BPM** with *808 BOOM* on track 1, *RHODES* on track 2, *LOFI FLUTE* on track 3 and the 808 kit on track 4.
 
 | Kind | Sounds (engine) |
 | --- | --- |
@@ -735,13 +735,13 @@ Notes:
 | **Lead** | SUPERSAW, G-FUNK LD, FAT LEAD, PAN FLUTE (ANALOG) · SYNC LEAD, HOOVER (TRIO) · TALKBOX, HARMONICA (VOICE) · GAME LEAD (LOFI) · LOFI FLUTE (SAMPLE) · FLUTE DUST (GRAIN) · NZ ARCADE (NOISE) · WAVE LEAD (LOFI) · CZ LEAD (PHASE) · ROBOT (VOICE) · PWM LEAD (ANALOG) · SQR LEAD (TRIO) |
 | **Pluck & bell** | TRAP PLUCK (ANALOG) · RESO PLUCK (PHASE) · PLUGG BELL, TRAP BELL, MUSIC BOX, KALIMBA, MARIMBA, XYLOPHONE, GLOCKEN, CELESTA, STEEL DRUM, HARP (DIGITAL) · VIBES (SAMPLE) · 8BIT ARP (LOFI) · GLASS BELL, WOOD BARS, NYLON PICK (FM6) · STR PLUCK, SITAR, PHYS HARP, BELL TREE, MODAL BAR, THUMB PNO, NYLON GTR, STEEL GTR, MUTED GTR, KOTO, BANJO, TANPURA, CHIMES, BIG BELL, VIBRA BAR, STEEL PAN, WOOD BLOCK (PHYS) · 1BIT BEEP (LOFI) · CZ RESO (PHASE) · TUBE BELL, FM PLUCK (DIGITAL) |
 | **Stab** | MIN STAB, MIN7 STAB, RAVE STAB, DUB CHORD (TRIO: one key plays the chord) · SYN BRASS (ANALOG) · CZ BRASS (PHASE) · BRASS SECT (FM6) · 80S POLY (TRIO) · HORN STAB, STRING STB (SAMPLE) · CHIP CHORD (LOFI) · POWER STAB (TRIO) |
-| **FX** | SCRATCH (scratch, backspin, rewind across the keys) · GM KIT (SAMPLE) · HAND DRUM, MEMB TOMS, TABLA, CONGA, TIMPANI (PHYS) · RAIN, NZ METAL, VINYL, HISS, RISER, NZ SNARE, BITCRUSH, RADIO (NOISE) · CHIP NOISE (LOFI) |
+| **FX** | SCRATCH (scratch, backspin, rewind across the keys) · GM KIT (SAMPLE) · HAND DRUM, MEMB TOMS, TABLA, CONGA, TIMPANI (PHYS) · RAIN, NZ METAL, VINYL, HISS, RISER, NZ SNARE, BITCRUSH, RADIO (NOISE) · CHIP NOISE (LOFI) · DUB SIREN (DUB) |
 
 To pick an engine directly: SAVE → PRESETS → **KNOB 2**. To start from the engine's defaults: SAVE → TOOLS → **INIT**.
 
-### The twelve engines
+### The thirteen engines
 
-Each engine's eight parameters are on **EDIT 1** (KNOB 1–4) and **EDIT 2** (KNOB 1–4), tap EDIT once and twice; the screen shows them under the engine's own page names (for example DIGITAL: *OPS*, *MOD*). A dash is an unused knob.
+Most engines' eight parameters are on **EDIT 1** (KNOB 1–4) and **EDIT 2** (KNOB 1–4), tap EDIT once and twice; the screen shows them under the engine's own page names (for example DIGITAL: *OPS*, *MOD*). A dash is an unused knob. DUB instead opens its performance page, followed by its tone page; its unused EDIT 2 page is hidden.
 
 | Engine | Sound | EDIT 1: KNOB 1 · 2 · 3 · 4 | EDIT 2: KNOB 1 · 2 · 3 · 4 |
 | --- | --- | --- | --- |
@@ -757,8 +757,26 @@ Each engine's eight parameters are on **EDIT 1** (KNOB 1–4) and **EDIT 2** (KN
 | **FM6** | six-operator FM, DX7 patches | ALG: PAT (the patch's) or 1–32 · FB feedback · MLVL modulator level (brightness) · MRAT modulator ratio | MEG modulator envelopes slower / faster · VMOD velocity → brightness · DTUN carrier spread · PTCH: F1–F8 factory, B1–B27 your bank |
 | **PHYS** | physical models: strings, bars and bells, drum heads, sympathetic strings (DaisySP and Rings, as Felucca 1.0 ported them; 3 voices a track, SYMP 2) | MODEL: MODAL, STRNG, MEMB, SYMP · STRC structure (MEMB: HARM, SYMP: CHRD the sympathetic strings' chord) · BRIT brightness · DAMP | POS strike / pluck position (SYMP: SYMP, how much they ring) · ACC accent · BOW bowing (MEMB: BEND, SYMP: BUZZ) · EXC the exciter in the mix |
 | **NOISE** | noise, from analogue to digital: colours, crackle, shift registers, metallic tones | MODE: ANLG, DUST, LFSR, META · COLR white → pink → brown · FREQ · RES | TRK key tracking · DENS impulses (LFSR, META: LEN, the register) · DRFT drift · CRSH crush (LFSR, META: CLK, the clock above the key) |
+| **DUB** | monophonic digital siren | PITCH ±24 semitones · WAVE: SIN, SQR, TRI · DRIVE · TONE | hidden; use the DUB performance page for RATE, DEPTH and ECHO |
 
 The **SAMPLE** sets are free recordings (CC0: Versilian Studios VSCO-2 CE and VCSL, Sonic Pi), coloured like a record through an old sampler. **GRAND PNO** is a Steinway recorded note by note; long notes fade as on the real one.
+
+### DUB siren
+
+On one of the three synth tracks, use **SAVE → PRESETS** to select **DUB SIREN**. This is one adjustable sound, not a bank of siren variants. Start with the track level low. Hold a key, then tap **EDIT** to open **DUB**:
+
+| Knob | Control | Behaviour |
+| --- | --- | --- |
+| 1 | PITCH | −24…+24 semitones, applied continuously to the sounding note; combined with bend and modulation before limiting the final pitch range |
+| 2 | RATE | The track's existing LFO rate; LFO 2 → SYNC can lock it to tempo |
+| 3 | DEPTH | Signed pitch-LFO amount; centre is no wobble, the other side reverses its direction |
+| 4 | ECHO | This track's send into the existing delay, not delay time or feedback |
+
+Tap EDIT again for **DUB TONE**: PITCH, WAVE, DRIVE and TONE. Tap again for the existing filter pages; leave EDIT and re-enter to return to the performance controls. The ordinary LFO and envelope pages still work.
+
+Release the key to enter the preset's release tail; the shared delay can keep ringing afterwards. **HOLD** and sequencer notes behave as on the other engines. The delay's **TIME, FDBK, COLR and MIX are global**: changing them affects other tracks using that delay. The other synth tracks and drums remain available.
+
+This is an original digital siren, not an exact NE555/PT2399 emulation. Existing engine IDs and original factory bank indices are unchanged; user Program Change positions now follow 154 factory entries instead of 153. The DUB sound, live pitch and performance parameters save with projects and user presets. Older firmware has no DUB engine and cannot reproduce DUB tracks: keep a backup before downgrading.
 
 ### FM6 and DX7 patches
 
@@ -973,7 +991,7 @@ The knobs of a MIDI controller set the sound (the standard CC map of Felucca 1.1
 
 **Sustain and pitch bend (2.6).** The **sustain pedal** (CC 64, on the track its channel plays): while it is down, a note you let go keeps sounding until the pedal comes up (the arp keeps it, a recording holds it as you hear it; a note played again meanwhile ends with its key). **Pitch bend** bends the track its channel plays, smoothly, by up to **BEND** semitones (GLO → MIDI 2: 1–12, default 2); the drum track ignores it. Other CCs (mod wheel…) are ignored, unless you map them with MIDI LEARN.
 
-**Program Change (2.6, after Felucca 1.5.1 and @renebohne's PR #179).** A Program Change on a track's channel loads its sound: on a synth track, number *n* is the *n*-th sound of the PRESETS list (0 the first: 808 BOOM; the 153 factory sounds by kind, then your user presets in order), on the drum channel kit *n*. A number past the end is ignored. The screen says *T2 PROG 5*. IN = CLOCK ignores it; IN = CH n sends it to the selected track.
+**Program Change (2.6, after Felucca 1.5.1 and @renebohne's PR #179).** A Program Change on a track's channel loads its sound: on a synth track, number *n* is the *n*-th sound of the PRESETS list (0 the first: 808 BOOM; the 154 factory sounds by kind, then your user presets in order), on the drum channel kit *n*. A number past the end is ignored. The screen says *T2 PROG 5*. IN = CLOCK ignores it; IN = CH n sends it to the selected track.
 
 ### MIDI LEARN (2.6)
 

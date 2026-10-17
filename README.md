@@ -15,9 +15,15 @@ Free and open source (GPL-3.0), based on <a href="https://github.com/hugelton/Fe
 
 ---
 
-SLOOP turns the FM-1 into a four-track groovebox you play live: **three synths and a drum machine** with 16 sounds on the white keys, twelve synthesis engines, 153 sounds, 37 drum kits, your own samples, a song mode you play with your hands, USB audio, MIDI in on the jack and MIDI clock — and now **physical models** (guitars, sitar, bells, hand drums), a **noise** engine, **six-operator FM with DX7 patches**, **parameter locks**, **micro timing**, **fills**, a **quick chain** of sections and the **sequencer to MIDI out**. House, techno, hip-hop, trap, drum & bass, amapiano, synthwave, lo-fi, ambient, chiptune — it does not pick a style for you. No factory patterns, nothing to load: everything you hear, you play.
+SLOOP turns the FM-1 into a four-track groovebox you play live: **three synths and a drum machine** with 16 sounds on the white keys, thirteen synthesis engines, 154 sounds, 37 drum kits, your own samples, a song mode you play with your hands, USB audio, MIDI in on the jack and MIDI clock — and now **physical models** (guitars, sitar, bells, hand drums), a **noise** engine, **six-operator FM with DX7 patches**, **parameter locks**, **micro timing**, **fills**, a **quick chain** of sections and the **sequencer to MIDI out**. This fork adds a **DUB siren** instrument. No factory patterns, nothing to load: everything you hear, you play.
 
 > **Status:** 2.7.1 (a fix for 2.7: an FM-1 whose second core ran late showed a FELUCCA CRASH screen and restarted; it now carries on, on one core). 2.7: two processor cores, fifteen arp modes, KBD HOLD, drum TUNE and DECAY, favourite sounds, looping samples, QUANT off, MIDI 3, your own screen colours; after 2.6's 27 punch-in effects, INSERT and MIDI LEARN. Still a beta: install at your own risk, and please [report](../../issues) what you find. Your projects, presets, samples and settings are kept when you update, and you can go back at any time (see [Going back](#going-back)).
+
+## DUB siren fork: 2.7.1-DUB1
+
+Based on upstream SLOOP 2.7.1. One sound, **DUB SIREN**, is appended to the FX sound bank. On a synth track, select it in **SAVE → PRESETS**, hold a key, then tap **EDIT** for **PITCH · RATE · DEPTH · ECHO**. PITCH bends the sounding note live; tap EDIT again for **WAVE · DRIVE · TONE**. The other tracks, drums and sequencer remain available.
+
+See [DUB controls and compatibility](GUIDE.md#dub-siren) before installing. This is an original digital instrument, not an analogue circuit emulation. The install/editor links above point to **upstream**, not this fork: build this checkout to obtain `build/felucca.fwsc`, whose version screen reads **SLOOP 2.7.1-DUB1**.
 
 ## Contents
 
@@ -201,8 +207,8 @@ Keys 1, 5, 9 and 13 glow dimly while a layer is held: the first key of each row 
 
 ### Synths and sounds
 
-- **Twelve engines:** analog, 4-op FM, **6-op FM with DX7 patches (FM6, 2.4)**, phase distortion, three-oscillator, tonewheel organ, formant voice, granular, lo-fi chip, sampler, **physical models (PHYS, 2.5)**, **noise (NOISE, 2.5)**.
-- **153 sounds, browsed by kind** — basses (sliding 808s, acid 303, reese, FM, bass guitar), guitars, sitar and koto (physical models), keys (Rhodes, a real Steinway grand, house and afro keys), organs and accordion, pads (string machine, granular clouds), leads (supersaw, talkbox, pan flute, harmonica), plucks and bells (harp, steel drum, glockenspiel, celesta, xylophone), stabs and dub chords — every one level-matched. **32 slots** for your own presets.
+- **Thirteen engines:** analog, 4-op FM, **6-op FM with DX7 patches (FM6, 2.4)**, phase distortion, three-oscillator, tonewheel organ, formant voice, granular, lo-fi chip, sampler, **physical models (PHYS, 2.5)**, **noise (NOISE, 2.5)** and **DUB siren**.
+- **154 sounds, browsed by kind** — the original 153 level-matched sounds plus DUB SIREN. **32 slots** for your own presets. DUB loudness has not been calibrated to the original bank; start with the track level low.
 - Envelopes (with a pitch punch for 808s; 2.6: in note values with ENV SYNC), LFO (2.6: tempo-synced, free-running or unipolar), arpeggiator, glide and voice modes (POLY, MONO, LEGATO, UNISON), per-track drive, **INSERT effect** (2.6: soft / hard clip, wavefolder, fuzz, bit crush, phaser, flanger, chorus) and slicer, ANALOG's filter as LP, BP or HP (2.6), sends to a **stereo chorus**, a **tempo delay** (dotted 1/8 and 1/16 too) and a **stereo reverb**.
 - **Key and chords (SEL):** the key of the song for all synths, 16 scales, one-key chords (triad, 7th, 9th, sus4, power), keys snapped to the scale or the scale on the white keys.
 
@@ -482,7 +488,7 @@ Something else? [Open an issue](../../issues): what you did, what you expected, 
 | | |
 | --- | --- |
 | Tracks | 3 synth parts (8 voices shared) + drums (16 sounds, 6 voices) |
-| Sounds | 153 presets on 12 engines (browsed by kind, level-matched), 6-op FM with DX7 SysEx import and a 27-patch bank, 8 sampled sets (CC0), 4 slots for your own samples (USR1–USR4), 32 user presets |
+| Sounds | 154 presets on 13 engines (153 original level-matched sounds + DUB SIREN), 6-op FM with DX7 SysEx import and a 27-patch bank, 8 sampled sets (CC0), 4 slots for your own samples (USR1–USR4), 32 user presets |
 | Drum kits | 37 (5 sampled, 32 synthesised, 16 sounds each), level-matched, plus your own: USR1–USR4 and USR3+4 (about 15 s) |
 | Sequencer | 64 steps per track, own length and division each (1/32 to two bars); chords with a level and ratchet per note; drums with a level and ratchet per sound; ties, slide; per-step parameter locks (24 per track), micro timing (±½ step in 1/64) and fill conditions; swing 0 (straight) to 100 (MPC 75 %); one sample-accurate clock (no drift) |
 | Recording | live, quantised as heard (latency-compensated), overdub; free take (the tempo follows you) or the tempo set; start on the first note or a one-bar count-in; 1, 2 or 4 bars |

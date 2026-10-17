@@ -67,6 +67,9 @@ run "punch-in FX: 27 effects (11 on the black keys), bounded, dry after release,
 $CC -O2 -w -Ibuild/gen -Ifirmware/src -o "$OUT/fx251_test" tests/fx251_test.c -lm
 run "after Felucca 1.4 / 1.5: INSERT, filter TYPE, ENV SYNC, LFO 2, drum mutes, MIDI LEARN" "$OUT/fx251_test"
 
+$CC -O2 -w -Ibuild/gen -Ifirmware/src -Ifirmware/hal -o "$OUT/dub_siren_test" tests/dub_siren_test.c -lm
+run "DUB siren: live pitch knob, release and track isolation" "$OUT/dub_siren_test" "$OUT"
+
 $CC -O2 -w -Ibuild/gen -Ifirmware/src -Ifirmware/hal -o "$OUT/ui_pages_test" tests/ui_pages_test.c -lm
 run "live UI: pages, layers (punch, steps, erase, roll, key, mix), holds, drums, REC, fuzz" "$OUT/ui_pages_test" "$OUT"
 # no divide by 0 (the FM-1 runs with the div0 trap off, hal/fm1_irq.h: a real one would give a wrong value

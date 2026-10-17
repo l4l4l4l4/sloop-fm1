@@ -727,6 +727,8 @@ static uint32_t track_render(track_t *t, int32_t *out, uint32_t n)
             pe_new[i] = t->p[P_E0 + i];
             t->p[P_E0 + i] = t->pe_old[i];
         }
+    if (e == &ENG_DUB)
+        tune += p[P_E0] * 16;                           /* live pitch joins modulation before the range clamp */
     track_lfo_tick(t);
     esync_coef(t);                                      /* this block's envelope steps for env_tick (ENV SYNC) */
     t->bend_s = (int16_t)(t->bend_s + ((t->bend - t->bend_s) >> 2) + (t->bend > t->bend_s) - (t->bend < t->bend_s));

@@ -69,7 +69,9 @@ static const char *const N_ENGNAME[] = {"ANALOG", "DIGITAL", "PHASE", "LOFI", "S
 #if FELUCCA_SLICE
                                              "SLICE",
 #endif
+                                        "DUB",
 };
+_Static_assert(NELEM(N_ENGNAME) == NENGINES, "engine names follow ENGINES[]");
 
 #define PD(l, f, mn, mx, df) {l, f, mn, mx, df, 0, 0}
 #define PE(l, n, df) {l, F_ENUM, 0, (int16_t)(sizeof(n) / sizeof(n[0]) - 1), df, n, 0}
@@ -242,6 +244,20 @@ static const param_desc_t *track_desc(const track_t *t, uint32_t id)
     return &TP[id];
 }
 
+/* Performance labels only: LFO > DEST and FX keep their common parameter names. */
+static const param_desc_t *dub_performance_desc(const track_t *t, uint32_t id)
+{
+    static const param_desc_t depth = PD("DEPTH", F_BIPCT, -64, 63, 0);
+    static const param_desc_t echo = PD("ECHO", F_PCT, 0, 127, 0);
+    if (!is_drum(t) && t->eng_req % NENGINES == ENGI_DUB) {
+        if (id == P_LD_PIT)
+            return &depth;
+        if (id == P_DLY)
+            return &echo;
+    }
+    return track_desc(t, id);
+}
+
 /* a knob turned `steps` on an F_INT with a 0-terminated name list (ENV SYNC's note values, the INSERT's BITS and
  * RATE): a name a detent, landing on the first value that shows it (2.6, as Felucca 1.5's ENV SYNC) */
 static int32_t names_turn(const param_desc_t *d, int32_t v, int32_t steps)
@@ -408,6 +424,7 @@ static const page_t PAGES[] = {
     {"REV/CHO", FAM_FX, SC_GLOBAL, GR_NONE, {G_RSIZE, G_RDAMP, G_CRATE, G_CDEPTH}},
     {"SEL", FAM_SCL, SC_TRACK, GR_SCALE, {P_ROOT, P_SCALE, P_QUANT, P_CHORD}},
     {"SEL 2", FAM_SCL, SC_TRACK, GR_SCALE, {P_TRANS, P_STRUM, P_VLEAD, 0xFF}},   /* (2.4: the chords played) */
+    {"DUB", FAM_EDIT, SC_TRACK, GR_NONE, {P_E0, P_LRATE, P_LD_PIT, P_DLY}},
     {"EDIT 1", FAM_EDIT, SC_ENGINE, GR_NONE, {P_E0, P_E1, P_E2, P_E3}},
     {"EDIT 2", FAM_EDIT, SC_ENGINE, GR_NONE, {P_E4, P_E5, P_E6, P_E7}},
     {"FILTER", FAM_EDIT, SC_TRACK, GR_NONE, {P_FTYPE, P_E4, P_E5, P_E7}},   /* ANALOG only (2.6, Felucca 1.5): TYPE CUT
@@ -454,6 +471,11 @@ static int page_for_drum(const page_t *pg)
 /* a page the buttons and SELECT reach on the selected track: EDIT > FILTER (TYPE) on ANALOG only */
 static int page_shown(const page_t *pg)
 {
+    int dub = !is_drum(TSEL) && TSEL->eng_req % NENGINES == ENGI_DUB;
+    if (pg->fam == FAM_EDIT && pg->scope == SC_TRACK && pg->id[0] == P_E0)
+        return dub;
+    if (dub && pg->scope == SC_ENGINE && pg->id[0] == P_E4)
+        return 0;                                      /* DUB's unused edit slots */
     return pg->id[0] != P_FTYPE || (!is_drum(TSEL) && TSEL->eng_req % NENGINES == 0u);
 }
 
@@ -473,5 +495,7 @@ static const param_desc_t *page_desc(const page_t *pg, uint32_t slot, int16_t **
         return &GP[id];
     }
     *valp = &TSEL->p[id];
+    if (pg->fam == FAM_EDIT && pg->scope == SC_TRACK && pg->id[0] == P_E0)
+        return dub_performance_desc(TSEL, id);
     return track_desc(TSEL, id);
 }

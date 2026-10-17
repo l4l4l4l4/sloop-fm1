@@ -474,6 +474,27 @@ int main(void)
          trk[1].lock[7].val == 127 && lock_find(&trk[1], 2, P_ED_FLT, 0) >= 0 &&
          step_fill(&trk[1], 4) == FC_FILL && step_fill(&trk[1], 5) == FC_NOFILL && trk[1].fill[1] == 0x09;
     bad += check("apply: INSERT 200 -> the last type, a lock on LEN / step 64 / param 200 is freed, LEVEL 999 -> 127, condition 3 -> normal", ok);
+    {
+        uint32_t e;
+        for (e = 0; e < NENGINES; e++)
+            if (!strcmp(ENGINES[e]->name, "DUB"))
+                break;
+        if (e < NENGINES) {
+            host_preset(&trk[0], e, 0);
+            trk[0].p[P_E0] = -12;
+            trk[0].p[P_LRATE] = 37;
+            trk[0].p[P_LD_PIT] = -29;
+            trk[0].p[P_DLY] = 91;
+            proj_capture(&q2);
+            host_preset(&trk[0], 0, 0);
+            proj_apply(&q2, 1);
+        }
+        bad += check("DUB project reload preserves the engine, preset and signed performance controls",
+                     e < NENGINES && trk[0].eng_req == e && trk[0].preset == 0 &&
+                     trk[0].p[P_E0] == -12 && trk[0].p[P_LRATE] == 37 &&
+                     trk[0].p[P_LD_PIT] == -29 && trk[0].p[P_DLY] == 91);
+    }
+
 
     q2 = q;
     bad += check("2.6 SAVE > PROJECT > ERASE: an object of no bytes is no project (an empty slot, older SLOOP too)",

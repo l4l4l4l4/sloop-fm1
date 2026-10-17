@@ -1,14 +1,20 @@
 <p align="center"><img src="assets/logo/sloop-logo.png" alt="SLOOP" width="480"></p>
 
-# SLOOP 2.7
+# SLOOP 2.7.1-DUB1
 
-**A live groovebox firmware for the M-VAVE FM-1 — for any style.** Four tracks — three synths and a drum machine with 16 sounds on the white keys — twelve synthesis engines (six-operator FM with DX7 patches, and now physical models and noise), 153 sounds, 37 drum kits (808, 909, trap, phonk, house, techno, UK garage, jungle, amapiano, reggaeton, synthwave, chiptune, ambient, jazz…), your own samples, ghost notes and ratchets, parameter locks, micro timing and fills, note repeat, one-key chords, 27 punch-in effects, a vinyl / sidechain / DJ-filter master, and a teenage-engineering-style screen that always shows what your hands can do next. No factory patterns, nothing to load: everything you hear, you play.
+**A live groovebox firmware for the M-VAVE FM-1 — for any style.** Four tracks — three synths and a drum machine with 16 sounds on the white keys — thirteen synthesis engines (including six-operator FM, physical models, noise and DUB siren), 154 sounds, 37 drum kits (808, 909, trap, phonk, house, techno, UK garage, jungle, amapiano, reggaeton, synthwave, chiptune, ambient, jazz…), your own samples, ghost notes and ratchets, parameter locks, micro timing and fills, note repeat, one-key chords, 27 punch-in effects, a vinyl / sidechain / DJ-filter master, and a teenage-engineering-style screen that always shows what your hands can do next. No factory patterns, nothing to load: everything you hear, you play.
 
 SLOOP is free and open source (GPL-3.0), based on [Felucca](https://github.com/hugelton/Felucca) by Leo Kuroshita / Hügelton Instruments.
 
-> **Status:** 2.7, running on the FM-1. Still a beta: install at your own risk, and please report what you find (GitHub issues).
+> **Fork status:** 2.7.1-DUB1, based on upstream 2.7.1. Host audio and native build verified; hardware validation is still required. Back up projects before installing.
 
 > **Looking for one control?** [GUIDE.md](GUIDE.md) is the complete guide: every button, key combination, layer, page and editor page, with a [one-page cheat sheet](GUIDE.md#26-cheat-sheet).
+
+### New in 2.7.1-DUB1
+
+- **DUB instrument:** a monophonic digital siren with sine, square and triangle waves, drive and tone.
+- **Playable EDIT page:** live pitch, pitch-LFO rate/depth and delay send under four knobs. One sound appended to the sound bank: DUB SIREN.
+- Existing engine IDs, original factory sound indices and project formats are retained. See [DUB controls and compatibility](GUIDE.md#dub-siren).
 
 ### New in 2.7
 
@@ -393,7 +399,7 @@ The screen shows the 27 keys as a keyboard: the white keys in four rows of four,
 
 ## The sound bank
 
-153 starting points for any style: house and techno, hip-hop, trap and plugg, drum & bass, amapiano, synthwave, lo-fi, ambient, soul. Every one is a full patch on one of the twelve engines: change it, save your own (32 user presets), or load your own samples. **PRESETS** browses them on a synth track **by kind** — basses, keys, organs, pads, leads, plucks and bells, stabs — the kind shown next to the name (the engine follows); your own presets come after. Every sound is level-matched: they all come out as loud at the same LEVEL. SLOOP starts (on a new project) at **90 BPM** with *808 BOOM* on track 1, *RHODES* on track 2, *LOFI FLUTE* on track 3 and the 808 kit on track 4.
+154 starting points for any style. Each is a full patch on one of thirteen engines: change it, save your own (32 user presets), or load your own samples. **PRESETS** browses them on a synth track **by kind** — basses, keys, organs, pads, leads, plucks and bells, stabs, FX — the kind shown next to the name (the engine follows); your own presets come after. The original 153 sounds are level-matched; DUB SIREN has not been calibrated to that bank. SLOOP starts (on a new project) at **90 BPM** with *808 BOOM* on track 1, *RHODES* on track 2, *LOFI FLUTE* on track 3 and the 808 kit on track 4.
 
 | Kind | Sounds (engine) |
 | --- | --- |
@@ -404,7 +410,7 @@ The screen shows the 27 keys as a keyboard: the white keys in four rows of four,
 | **Lead** | SUPERSAW (eight detuned saws: trance, EDM), G-FUNK LD, FAT LEAD, PAN FLUTE (ANALOG) · SYNC LEAD, HOOVER (TRIO) · TALKBOX, HARMONICA (VOICE) · GAME LEAD (LOFI) · LOFI FLUTE (SAMPLE) · FLUTE DUST (GRAIN) · NZ ARCADE (NOISE) · WAVE LEAD (LOFI) · CZ LEAD (PHASE) · ROBOT (VOICE) · PWM LEAD (ANALOG) · SQR LEAD (TRIO) |
 | **Pluck & bell** | TRAP PLUCK (ANALOG) · RESO PLUCK (PHASE) · PLUGG BELL, TRAP BELL, MUSIC BOX, KALIMBA, MARIMBA, XYLOPHONE, GLOCKEN, CELESTA, STEEL DRUM, HARP (DIGITAL) · VIBES (SAMPLE) · 8BIT ARP (LOFI) · GLASS BELL, WOOD BARS, NYLON PICK (FM6) · STR PLUCK, SITAR, PHYS HARP, BELL TREE, MODAL BAR, THUMB PNO, NYLON GTR, STEEL GTR, MUTED GTR, KOTO, BANJO, TANPURA, CHIMES, BIG BELL, VIBRA BAR, STEEL PAN, WOOD BLOCK (PHYS) · 1BIT BEEP (LOFI) · CZ RESO (PHASE) · TUBE BELL, FM PLUCK (DIGITAL) |
 | **Stab** | MIN STAB, MIN7 STAB, RAVE STAB, DUB CHORD (dub techno, into the delay) (TRIO: one key plays the chord) · SYN BRASS (ANALOG) · CZ BRASS (PHASE) · BRASS SECT (FM6) · 80S POLY (TRIO) · HORN STAB, STRING STB (SAMPLE) · CHIP CHORD (LOFI) · POWER STAB (TRIO) |
-| **FX** | SCRATCH — scratch, backspin, rewind across the keys · GM KIT (SAMPLE) · HAND DRUM, MEMB TOMS, TABLA, CONGA, TIMPANI (PHYS) · RAIN, NZ METAL, VINYL, HISS, RISER, NZ SNARE, BITCRUSH, RADIO (NOISE) · CHIP NOISE (LOFI) |
+| **FX** | SCRATCH — scratch, backspin, rewind across the keys · GM KIT (SAMPLE) · HAND DRUM, MEMB TOMS, TABLA, CONGA, TIMPANI (PHYS) · RAIN, NZ METAL, VINYL, HISS, RISER, NZ SNARE, BITCRUSH, RADIO (NOISE) · CHIP NOISE (LOFI) · DUB SIREN (DUB) |
 
 The sampled sounds (SAMPLE engine, **SET**: PIANO (a grand), BASS, VIBES, HORNS, STRGS, FLUTE, SCRCH, PERC) are free recordings (CC0: Versilian Studios VSCO-2 CE and VCSL, Sonic Pi), retuned and coloured like a record through an old sampler.
 
@@ -603,7 +609,7 @@ The glow is a short pulse on every scan of the panel (about 900 times a second):
 | | |
 | --- | --- |
 | Tracks | 3 synth parts (8 voices shared) + drums (16 sounds, 6 voices) |
-| Sounds | 153 presets on 12 engines (browsed by kind, level-matched), 6-operator FM with DX7 SysEx import and a 27-patch bank, 8 sampled sets (CC0), 4 slots for your own samples (USR1–USR4) |
+| Sounds | 154 presets on 13 engines (153 original level-matched sounds + DUB SIREN), 6-operator FM with DX7 SysEx import and a 27-patch bank, 8 sampled sets (CC0), 4 slots for your own samples (USR1–USR4) |
 | Sequencer | 64 steps per track, own length and division each (1/32 to two bars); chords with a level and ratchet per note; drums with a level and ratchet per sound; ties, slide; per-step nudge (±½ step in 1/64), parameter locks (24 per track, any sound parameter) and fill conditions (fill only / no fill); swing 0 (straight) to 100 (MPC 75 %); one sample-accurate clock for steps, arp, rolls, slicer and song (no drift) |
 | Performance | layers (hold a button: keys and knobs change job): punch-in FX, erase, note repeat, step entry, key / chords, mute / solo / fill / tap tempo; live sections on the bar and a quick chain of up to 8 |
 | Drum kits | 37 (5 sampled, 32 synthesised, 16 sounds each), plus your own: USR1–USR4 and USR3+4 (about 15 s) |

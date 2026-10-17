@@ -43,14 +43,23 @@ On Linux x86-64 the toolchain runs natively and Docker is not needed.
 ## Build
 
 ```
-./build.sh
+sh build.sh
 ```
 
 `JIELI_TOOLCHAIN` and `AC79_SDK` override the default locations
 (`~/.jieli/toolchain`, `~/fw-AC79_AIoT_SDK`).
 
-`./build.sh --release 0.9-beta` makes a release build: the package identity becomes
+`sh build.sh --release 0.9-beta` makes a release build: the package identity becomes
 `FM-1_909` and the version string `0.9-BETA`; the package is `build/felucca-0.9-beta.fwsc`.
+
+For this fork, a plain build retains the `FM-1_900` package identity and reports
+**SLOOP 2.7.1-DUB1** on the device. On native Linux, with Python/Pillow and the
+official dependencies installed:
+
+```sh
+JIELI_DOCKER=0 JIELI_TOOLCHAIN=/path/to/jieli/toolchain \
+  AC79_SDK=/path/to/fw-AC79_AIoT_SDK PYTHON=python3 sh build.sh
+```
 
 Build options (environment, `0` or `1`; defaults in `firmware/src/felucca.c`):
 
@@ -72,12 +81,12 @@ SAMPLE engine has only the generated drum kit.
 ## Tests
 
 ```
-tests/run_tests.sh
+sh tests/run_tests.sh
 ```
 
 Runs the host tests (flash storage, user presets, MIDI parser, update entry, update
 loader, a DSP render, the 4-track mix, project formats, the SLICER, the regression suite,
-the command-line installer) and, with Node.js, the web page tests. Run it after `./build.sh`
+the command-line installer) and, with Node.js, the web page tests. Run it after `sh build.sh`
 (it uses `build/` and needs `AC79_SDK` set as for the build).
 
 The regression suite (`tests/regress.c`) renders every engine and preset and compares a
@@ -99,7 +108,7 @@ python3 tools/build_preview.py
 tests/run_preview_tests.sh
 ```
 
-The build produces `build/preview/sloop-preview.wasm`. The tests compare all twelve engines sample by sample
+The build produces `build/preview/sloop-preview.wasm`. The tests compare the synthesis engines sample by sample
 against the same adapter compiled for the host and verify sequencing, live mixer changes, stop, and user samples.
 `web/make_site.py` includes the preview and caches it for the site app when the WASM build is present:
 
